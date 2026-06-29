@@ -151,7 +151,7 @@ See `examples/mobile-android/` for a complete, filled-in example based on a real
 
 ## Author
 
-Dakota Fabro (they/them)
+Dakota Fabro, B.Psy, M.Ed, M.Th (they/them)
 AAIF Ambassador | [Agentic AI Foundation](https://agentic-ai.org)
 
 ## License
