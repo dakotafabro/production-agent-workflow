@@ -22,3 +22,6 @@ Thumbs.db
 
 # Site build artifacts
 site.zip
+site/node_modules/
+site/.next/
+site/out/
