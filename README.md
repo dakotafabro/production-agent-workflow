@@ -1,6 +1,6 @@
 # Production Agent Workflow
 
-A template for engineers and non-engineers moving from "vibe coding" to production-grade agent-assisted engineering.
+A template for practitioners moving from "vibe coding" to production-grade agent-assisted engineering.
 
 ## The Problem
 
@@ -43,7 +43,7 @@ A directory structure and set of fill-in documents that teach your agent how to 
 # Clone the template
 git clone https://github.com/dakotafabro/production-agent-workflow.git ~/research
 
-# Or if you already have a research/workspace repo, copy the structure in
+# Or if you already have a workspace repo, copy the structure in
 cp -r production-agent-workflow/* ~/your-workspace/
 ```
 
@@ -71,7 +71,7 @@ You can be productive in 15 minutes. The rest compounds over weeks.
 │   └── convention-mining.md     # Learning from code reviews
 ├── references/                  # Platform knowledge (frameworks, APIs)
 ├── active/                      # Current work-in-progress
-├── sessions/                    # Session logs (optional, for measurement)
+├── sessions/                    # Session logs (optional)
 └── examples/
     └── mobile-android/          # Worked example
 ```
@@ -118,6 +118,17 @@ When everyone on a team maintains their own conventions repo:
 - Onboarding accelerates (new engineers build their world model by mining reviews)
 
 The template is individual, but the benefits are collective.
+
+## Context and Assumptions
+
+This template was developed from 145+ days of daily agent-assisted engineering practice. Some context on the environment it was built in:
+
+- **Team-wide world model available.** The author's team maintains a shared knowledge base that the agent can consult. If you don't have this, the `conventions/` and `references/` directories serve as your local equivalent.
+- **Cross-disciplinary work.** The author works across engineering, psychology, education, and organizational systems. The workflow is designed to handle context-switching between domains. If you work in a single domain, the structure still applies but some phases (like Orient) may be simpler.
+- **Goose as the primary agent.** The workflow was developed using [Goose](https://github.com/block/goose), but the principles apply to any AI agent that reads project-level configuration (Cursor, Copilot Workspace, Windsurf, Aider, etc.).
+- **Everything stays local until shared.** The workflow assumes you work locally and only push when verified. Nothing leaves your machine until the pre-push checklist passes.
+
+You don't need any of these conditions to use the template. Start with `AGENTS.md` and `pre-push-checklist.md`. Add complexity as your practice matures.
 
 ## Worked Example
 
