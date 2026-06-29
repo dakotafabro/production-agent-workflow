@@ -19,7 +19,7 @@ These aren't failures of the practitioner. They're the natural result of an agen
 
 ## The Core Insight
 
-**An agent is only as good as the conventions you give it.** When your agent knows your architecture, your testing patterns, and your verification steps, it generates code that aligns with your expectations from the first draft. The template is a way to organize what you already know so your agent can access it.
+**An agent is only as good as the context you give it.** The more your agent knows about your architecture, testing patterns, and verification steps, the more likely its output aligns with what you expect. Your expertise still drives the final decision - the template helps your agent get closer on the first draft.
 
 ## What This Template Provides
 

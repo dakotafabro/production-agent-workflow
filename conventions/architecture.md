@@ -2,7 +2,7 @@
 
 <!--
 This document tells your agent where logic lives in your codebase.
-When the agent generates code, it uses these rules to place things correctly.
+When the agent generates code, it references these rules to inform where things belong. Your review confirms placement.
 
 Fill in the sections that apply to your stack. Delete what doesn't apply.
 -->

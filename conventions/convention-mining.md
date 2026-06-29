@@ -11,7 +11,7 @@ Most of these norms live in people's heads. They surface one PR at a time, in re
 ## Why It Matters
 
 - **For you:** Your PRs align with team expectations from the first draft. Fewer review cycles. Faster merges.
-- **For your agent:** Encoded conventions mean the agent generates code that follows team patterns instead of inventing new ones.
+- **For your agent:** Encoded conventions help the agent generate code that is more likely to follow team patterns instead of inventing new ones.
 - **For the team:** Implicit knowledge becomes explicit. Onboarding accelerates. Consistency improves.
 
 ## How to Practice
@@ -89,7 +89,7 @@ Good conventions to mine from reviews:
 
 After a few weeks of convention mining:
 - Your `conventions/` directory reflects how your team actually thinks about code
-- Your agent generates code that passes review with fewer iterations
+- Your agent is more likely to generate code that passes review with fewer iterations
 - You understand the codebase architecture as a system, not just individual files
 - New team members can read your conventions and get up to speed faster
 
