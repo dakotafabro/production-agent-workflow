@@ -19,7 +19,7 @@ This means the structure in this template isn't arbitrary. It maps directly to h
 |---|---|
 | `AGENTS.md` | Read at session start. Shapes all behavior for the session. |
 | `workflow.md` | Referenced when you ask Goose to build something. It follows the phases. |
-| `conventions/architecture.md` | Consulted before generating code. Goose places logic in the correct layer. |
+| `conventions/architecture.md` | Consulted before generating code. Helps Goose place logic in the appropriate layer. |
 | `conventions/testing.md` | Consulted when writing tests. Goose follows your testing patterns. |
 | `conventions/pre-push-checklist.md` | Run before pushing. Goose executes each command in order. |
 | `conventions/pr-workflow.md` | Referenced when drafting PR descriptions or scoping work. |

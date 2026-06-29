@@ -2,14 +2,14 @@
 
 ## What It Is
 
-A world model is a structured knowledge base that gives your agent context about your codebase, your team's architecture, and how the system works as a whole. Without it, your agent generates plausible code. With it, your agent generates code that fits.
+A world model is a structured knowledge base that gives your agent context about your codebase, your team's architecture, and how the system works as a whole. Without it, your agent generates plausible code. With it, your agent is more likely to generate code that fits your codebase. Your expertise validates the output.
 
 Think of it as the difference between asking a contractor to build a room in "a house" vs. giving them the blueprints, the building codes, and the history of past renovations.
 
 ## Why It Matters
 
 When an agent has no world model:
-- It generates code that compiles but lives in the wrong layer
+- It may generate code that compiles but lives in the wrong layer
 - It creates new patterns when existing ones already solve the problem
 - It duplicates functionality that exists in another module
 - It makes architecture decisions that conflict with past team decisions
