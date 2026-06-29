@@ -47,7 +47,16 @@ git clone https://github.com/dakotafabro/production-agent-workflow.git ~/researc
 cp -r production-agent-workflow/* ~/your-workspace/
 ```
 
-Then fill in:
+Then run the interactive setup:
+
+```bash
+cd ~/research
+./setup.sh
+```
+
+The script walks you through configuring your identity, agent boundaries, and pre-push checklist. It writes your `AGENTS.md` and `conventions/pre-push-checklist.md` based on your answers.
+
+Or fill in manually:
 
 1. **`AGENTS.md`** - Your identity, boundaries, and what the agent can do autonomously
 2. **`conventions/pre-push-checklist.md`** - Every command that must pass before code leaves your machine
