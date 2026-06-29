@@ -1,6 +1,6 @@
 # Production Agent Workflow
 
-A template for practitioners ready to level up from AI-generated code to production-grade agent-assisted engineering.
+A template for engineers and non-engineers moving from AI-generated code to production-grade agent-assisted engineering. Small PRs. Passing CI. Code your team can actually review.
 
 ## The Problem
 
@@ -22,7 +22,7 @@ The difference between generating code and shipping production code isn't the to
 | "Generate a feature" | Orient on existing patterns, then build one layer |
 | Push and see if CI passes | Run the pre-push checklist locally |
 | One big PR with everything | Stacked PRs, one concern each |
-| Trust the AI output | Understand every line before committing |
+| Trust the AI output blindly | Understand the full implementation before committing |
 | No conventions documented | Conventions encoded so the agent follows them |
 | Hope it works | Verify it works, then ship |
 
