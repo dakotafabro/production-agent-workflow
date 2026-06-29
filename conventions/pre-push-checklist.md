@@ -82,7 +82,7 @@ Run these in order. Each mirrors a CI job that will block the PR if it fails.
 # ./gradlew assertModuleGraph        # Gradle module graph
 
 # AI-powered review (if available):
-# sq agents review                   # Builderbot-style checks
+# your-review-tool review             # AI-powered code review (if available)
 ```
 
 ### 6. Manual Checks
