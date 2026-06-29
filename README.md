@@ -1,41 +1,34 @@
 # Production Agent Workflow
 
-A template for engineers and non-engineers moving from AI-generated code to production-grade agent-assisted engineering. Small PRs. Passing CI. Code your team can actually review.
+A template for organizing your individual context and work style so your agent can meet you where you are. The result: more impactful collaboration, smaller PRs, passing CI, and code your team can review in minutes.
 
-## The Problem
+## What This Is
 
-AI tools generate code fast. But speed without structure produces:
+This is a structured place to put the knowledge you already carry - your architecture understanding, your testing patterns, your verification habits - so your agent has access to it every session. You don't need to change how you work. You're giving your agent the context it needs to work the way you already do.
 
-- **Large PRs** (500+ lines, multiple concerns tangled together)
-- **Failing CI** on first push (and second, and third)
-- **Merge conflicts** from long-lived branches
-- **Code nobody understands** because the human never read what the agent generated
+## The Opportunity
 
-The cost compounds. Every oversized PR creates review burden. Every CI failure burns a cycle. Every merge conflict blocks the team. The agent moved fast, but the team moved slower.
+When practitioners work with AI agents without organized context, common friction points emerge:
 
-## The Shift
+- **Large PRs** - the agent doesn't know your team's scoping norms
+- **CI failures** - the agent doesn't know which checks to run locally
+- **Merge conflicts** - work stays on branches longer than it needs to
+- **Misaligned code** - the agent invents patterns instead of following existing ones
 
-The difference between generating code and shipping production code isn't the tool. It's the structure around it.
+These aren't failures of the practitioner. They're the natural result of an agent that doesn't have enough context about your codebase and workflow. This template gives you a place to organize that context.
 
-| Without Structure | With Structure |
-|---|---|
-| "Generate a feature" | Orient on existing patterns, then build one layer |
-| Push and see if CI passes | Run the pre-push checklist locally |
-| One big PR with everything | Stacked PRs, one concern each |
-| Trust the AI output blindly | Understand the full implementation before committing |
-| No conventions documented | Conventions encoded so the agent follows them |
-| Hope it works | Verify it works, then ship |
+## The Core Insight
 
-The core insight: **an agent is only as good as the conventions you give it.** Without a world model, AI generates plausible code. With one, it generates correct code.
+**An agent is only as good as the conventions you give it.** When your agent knows your architecture, your testing patterns, and your verification steps, it generates code that aligns with your expectations from the first draft. The template is a way to organize what you already know so your agent can access it.
 
 ## What This Template Provides
 
-A directory structure and set of fill-in documents that teach your agent how to work in your codebase. When you fill these in, your agent:
+A directory structure and set of fill-in documents that organize your individual context for your agent. When you fill these in, your agent:
 
 - Knows your architecture before generating code
 - Runs your verification steps before you push
-- Scopes work to reviewable increments
-- Follows your team's patterns instead of inventing new ones
+- Scopes work to the increments your team expects
+- Follows your existing patterns instead of inventing new ones
 
 ## Quickstart
 
@@ -71,6 +64,10 @@ You can be productive in 15 minutes. The rest compounds over weeks.
 ~/research/
 ├── AGENTS.md                    # Agent norms and boundaries
 ├── workflow.md                  # Idea-to-ship phases
+├── world-model.md              # How shared + individual knowledge work together
+├── goose.md                    # Why this structure works with Goose
+├── prompts.md                  # Copy-paste prompts for your agent
+├── setup.sh                    # Interactive setup script
 ├── conventions/
 │   ├── architecture.md          # Layer responsibilities
 │   ├── testing.md               # Test design principles
@@ -91,13 +88,13 @@ You can be productive in 15 minutes. The rest compounds over weeks.
 
 Who are you? What can the agent do without asking? What requires your confirmation?
 
-This lives in `AGENTS.md`. It's the first thing your agent reads.
+This lives in `AGENTS.md`. It's the first thing your agent reads. It shapes how the agent communicates and what it does autonomously vs. what it brings to you first.
 
 ### Layer 2: Workflow and Verification
 
 How does work move from idea to shipped code? What gates exist between "generated" and "merged"?
 
-This lives in `workflow.md` and `conventions/pre-push-checklist.md`. The pre-push checklist is the single highest-leverage document in this template. If you fill in nothing else, fill in this.
+This lives in `workflow.md` and `conventions/pre-push-checklist.md`. The pre-push checklist is the single highest-leverage document in this template. It encodes the verification steps you already run (or want to run) so your agent handles them consistently.
 
 ### Layer 3: Conventions and World Model
 
@@ -120,8 +117,8 @@ See `conventions/convention-mining.md` for how to practice this.
 
 ## For Teams
 
-When everyone on a team maintains their own conventions repo:
-- PRs get smaller (the agent knows the scoping rules)
+When everyone on a team organizes their individual context:
+- PRs get smaller (the agent knows the scoping norms)
 - CI passes on first push (the pre-push checklist runs locally)
 - Reviews are faster (the code already follows team patterns)
 - Onboarding accelerates (new engineers build their world model by mining reviews)
