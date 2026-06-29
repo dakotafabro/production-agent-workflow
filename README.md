@@ -1,6 +1,6 @@
 # Production Agent Workflow
 
-A template for practitioners moving from "vibe coding" to production-grade agent-assisted engineering.
+A template for practitioners ready to level up from AI-generated code to production-grade agent-assisted engineering.
 
 ## The Problem
 
@@ -15,9 +15,9 @@ The cost compounds. Every oversized PR creates review burden. Every CI failure b
 
 ## The Shift
 
-The difference between vibe coding and production engineering isn't the tool. It's the structure around it.
+The difference between generating code and shipping production code isn't the tool. It's the structure around it.
 
-| Vibe Coding | Production Engineering |
+| Without Structure | With Structure |
 |---|---|
 | "Generate a feature" | Orient on existing patterns, then build one layer |
 | Push and see if CI passes | Run the pre-push checklist locally |
