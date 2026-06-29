@@ -1,39 +1,27 @@
-# Idea-to-Ship Workflow
+# Workflow
 
-A phased approach to moving work from idea to production. Each phase has a clear purpose and exit criteria. The agent surfaces which phase you're in so you always know where you are.
+A phased approach to moving work from idea to shipped code. Adapt these phases to your own process. The key principle: every phase has a gate that prevents unverified work from reaching the next stage.
 
-## Phase 1: Capture
+## Phase 1: Orient
 
-When an idea arrives, capture it with zero friction. No structure needed yet.
+Before generating any code, understand what already exists.
 
-- Acknowledge the idea
-- Log it to `active/[idea-name].md`
-- Move on (or continue to Phase 2 if ready)
+- [ ] Does this pattern already exist in the codebase?
+- [ ] What existing code is adjacent to this change?
+- [ ] Is this approved work or exploration?
+- [ ] How should this be scoped? (one theme per PR, bounded size)
 
-## Phase 2: Orient
+If you have architecture docs, a world model, or a conventions directory, consult them here. The goal is to avoid generating code that conflicts with existing patterns.
 
-Before any code, check what already exists.
+**Exit criteria:** You know the scope, you know which patterns to follow, and you have a plan.
 
-- [ ] Does this already exist in the codebase? What's adjacent?
-- [ ] Is this a prototype or production work? What's the shipping strategy?
-- [ ] How would this be structured as PRs? (one theme per PR, bounded size)
-- [ ] What existing patterns should this follow?
-
-The agent consults `conventions/` and `references/` during this phase. If you have a world model, this is where it gets loaded.
-
-**Exit criteria:** You have a brief plan. You know the scope. You know which patterns to follow.
-
-## Phase 3: Build
+## Phase 2: Build
 
 When code starts:
 
 **Before writing code:**
-- [ ] Branch created with a descriptive name
+- [ ] Branch created
 - [ ] Scope defined (one theme, target your PR size limit)
-
-**While building:**
-- Stay on the original intent
-- If the work drifts into a second concern, capture it in `active/[new-topic].md` and return to the original thread
 
 **Before committing:**
 - [ ] Pre-push checklist passes (see `conventions/pre-push-checklist.md`)
@@ -45,15 +33,15 @@ When code starts:
 - [ ] Scope verified: one theme, bounded size
 - [ ] No unrelated changes included
 
-## Phase 4: Ship
+## Phase 3: Ship
 
 The PR is open. Now it needs to land cleanly.
 
 - Respond to review comments (reply, don't just resolve)
-- Keep the PR focused - if a reviewer asks for something out of scope, create a follow-up
-- When approved, merge and move on
+- Keep the PR focused. If a reviewer asks for something out of scope, create a follow-up.
+- When approved, merge and move on.
 
-## Phase 5: Reflect (optional)
+## Phase 4: Learn (optional)
 
 After shipping, briefly note:
 
@@ -61,23 +49,16 @@ After shipping, briefly note:
 2. What pattern was followed (or established)?
 3. Anything to do differently next time?
 
-This feeds back into your conventions over time.
+This feeds back into your conventions over time. See `conventions/convention-mining.md` for how to turn review feedback into encoded knowledge.
 
-## Drift Protocol
+## Customization
 
-When drift is detected mid-session:
+This workflow is intentionally minimal. Adapt it to your process:
 
-1. Name what the original intent was
-2. Name what the drift is toward
-3. Decide: follow the drift, or bookmark it for later?
-4. If bookmark: create `active/[drift-topic].md` with a one-liner and return
+- **If you use a ticket tracker:** Add a step in Phase 1 to check for an approved ticket before building.
+- **If you have a world model or shared knowledge base:** Add a step in Phase 1 to consult it.
+- **If you track sessions:** Add a Phase 4 step to log what was accomplished.
+- **If you prototype before shipping:** Add a prototype lifecycle between Orient and Build (see `conventions/shipping-safely.md`).
+- **If you work across disciplines:** Add an Orient step to check whether the work touches multiple domains and scope accordingly.
 
-## Phase Transitions
-
-When moving between phases, the agent surfaces a one-line signal:
-
-- "Phase 2: Orient - checking existing patterns..."
-- "Phase 3: Build - scope defined, one theme."
-- "Pre-push checklist: format check, lint, compile, test..."
-
-This builds trust that the workflow is being followed without requiring you to ask.
+The phases are a starting point. What matters is that gates exist between "generated" and "merged."
