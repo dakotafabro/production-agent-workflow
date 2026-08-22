@@ -1,0 +1,20 @@
+{
+  "name": "production-agent-workflow",
+  "version": "1.0.0",
+  "type": "template",
+  "description": "Template for production-grade AGENTS.md configuration - conventions, verification gates, and world model references",
+  "entry": "AGENTS.md",
+  "scope": "project",
+  "token_cost": 0,
+  "keywords": ["template", "AGENTS.md", "workflow", "conventions", "production", "onboarding"],
+  "author": {
+    "name": "Dakota Fabro",
+    "github": "dakotafabro"
+  },
+  "license": "Apache-2.0",
+  "repository": "https://github.com/dakotafabro/production-agent-workflow",
+  "agents": ["goose", "claude-code", "codex", "cursor"],
+  "dependencies": [],
+  "conflicts": [],
+  "peers": []
+}
