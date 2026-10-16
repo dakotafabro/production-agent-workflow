@@ -5,14 +5,14 @@ Run these in order. Each mirrors a CI job that will block the PR if it fails.
 ## 1. Formatting (CI: format check)
 
 ```bash
-./static-analysis/run-format.sh -l    # Lint check only (no writes)
-./static-analysis/run-format.sh       # Auto-fix formatting
+./gradlew ktfmtCheck    # Check only (no writes)
+./gradlew ktfmtFormat   # Auto-fix formatting
 ```
 
-## 2. Static Analysis (CI: lint/detekt)
+## 2. Static Analysis (CI: detekt)
 
 ```bash
-./static-analysis/run-lint.sh
+./gradlew detekt
 ```
 
 ## 3. Module Compilation
@@ -33,17 +33,17 @@ For multi-module changes, compile all affected modules:
 ./gradlew testDebugUnitTest --stacktrace                           # Full suite (slow)
 ```
 
-## 5. Snapshot Tests (CI: verifySnapshotDebug)
+## 5. Snapshot Tests (CI: verifyPaparazziDebug)
 
 Only if the PR touches Compose UI:
 ```bash
-./gradlew verifySnapshotDebug --stacktrace
+./gradlew verifyPaparazziDebug --stacktrace
 ```
 
 ## 6. Android Lint (CI: lintDebug)
 
 ```bash
-./gradlew :app:application:lintDebug
+./gradlew :app:lintDebug
 ```
 
 ## 7. Module Graph (CI: assertModuleGraph)
@@ -67,8 +67,8 @@ For a typical feature PR touching one module:
 ```bash
 MODULE=":feature:checkout:ui"
 
-./static-analysis/run-format.sh -l && \
-./static-analysis/run-lint.sh && \
+./gradlew ktfmtCheck && \
+./gradlew detekt && \
 ./gradlew ${MODULE}:compileDebugKotlin && \
 ./gradlew ${MODULE}:testDebugUnitTest --stacktrace
 ```

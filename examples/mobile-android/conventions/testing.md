@@ -18,7 +18,7 @@ Backtick descriptive names:
 fun `shows error when deletion fails`() { ... }
 
 @Test
-fun `blocks purchase when content is explicit and user is restricted`() { ... }
+fun `blocks purchase when item is age-restricted and user is not verified`() { ... }
 ```
 
 ## Test Design Principles
@@ -29,36 +29,36 @@ If the test defines its own version of the logic being tested, it becomes tautol
 
 ```kotlin
 // BAD: re-implements the logic inside the test
-private fun shouldBlock(isExplicit: Boolean, isAllowed: Boolean) = isExplicit && !isAllowed
+private fun shouldBlock(isAgeRestricted: Boolean, isVerified: Boolean) = isAgeRestricted && !isVerified
 
 @Test
-fun `blocks when explicit and not allowed`() {
+fun `blocks when age-restricted and not verified`() {
     assertThat(shouldBlock(true, false)).isTrue()  // tests nothing real
 }
 
 // GOOD: exercises the actual production class
 @Test
-fun `blocks when explicit and not allowed`() {
-    val gate = PurchaseGate(isExplicit = true, isAllowed = false)
+fun `blocks when age-restricted and not verified`() {
+    val gate = PurchaseGate(isAgeRestricted = true, isVerified = false)
     assertThat(gate.shouldBlock()).isTrue()
 }
 ```
 
 ### Cover the full boolean matrix
 
-When behavior depends on N boolean inputs, enumerate all 2^N combinations. For 2 booleans (isExplicit x isAllowed), that's 4 test cases.
+When behavior depends on N boolean inputs, enumerate all 2^N combinations. For 2 booleans (isAgeRestricted x isVerified), that's 4 test cases.
 
 ### Fakes over mocks for repositories
 
 Hand-rolled fakes that implement the interface. For unused methods: `error("Not used in this test")`.
 
 ```kotlin
-class FakeTrackRepository : TrackRepository {
-    private val tracks = mutableListOf<Track>()
+class FakeOrderRepository : OrderRepository {
+    private val orders = mutableListOf<Order>()
 
-    override suspend fun getAll(): List<Track> = tracks
-    override suspend fun save(track: Track) { tracks.add(track) }
-    override suspend fun delete(id: String) { tracks.removeAll { it.id == id } }
+    override suspend fun getAll(): List<Order> = orders
+    override suspend fun save(order: Order) { orders.add(order) }
+    override suspend fun delete(id: String) { orders.removeAll { it.id == id } }
 
     // Not under test in this file
     override suspend fun sync() = error("Not used in this test")
@@ -70,8 +70,8 @@ class FakeTrackRepository : TrackRepository {
 Use `awaitCancellation()` in fakes to simulate permanently stalled suspends. The test only passes if the production timeout fires.
 
 ```kotlin
-class StallingRepository : LyricsRepository {
-    override suspend fun fetch(id: String): Lyrics {
+class StallingRepository : ReceiptRepository {
+    override suspend fun fetch(id: String): Receipt {
         awaitCancellation()  // hangs forever
     }
 }
@@ -79,9 +79,9 @@ class StallingRepository : LyricsRepository {
 @Test
 fun `retries after timeout on stalled fetch`() = runTest {
     val repository = StallingRepository()
-    val poller = LyricsPoller(repository, timeout = 2.seconds)
+    val poller = ReceiptPoller(repository, timeout = 2.seconds)
 
-    val result = poller.poll("track-1")
+    val result = poller.poll("order-1")
 
     assertThat(result.attempts).isGreaterThan(1)
 }
@@ -99,7 +99,7 @@ delay(500)
 assertThat(persisted).hasSize(20)
 
 // GOOD
-val result = recorder.awaitPersisted(count = 20)
+val result = store.awaitPersisted(count = 20)
 assertThat(result).hasSize(20)
 ```
 

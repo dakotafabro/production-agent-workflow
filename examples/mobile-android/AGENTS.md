@@ -4,7 +4,7 @@
 
 - Name: [Your Name]
 - Pronouns: [your pronouns]
-- Timezone: America/Los_Angeles
+- Timezone: [your timezone]
 
 ## Agent Boundaries
 
@@ -38,10 +38,10 @@
 
 ```bash
 # 1. Formatting
-./static-analysis/run-format.sh -l
+./gradlew ktfmtCheck
 
 # 2. Static analysis
-./static-analysis/run-lint.sh
+./gradlew detekt
 
 # 3. Compilation (affected modules)
 ./gradlew :feature:yourmodule:ui:compileDebugKotlin
@@ -50,7 +50,7 @@
 ./gradlew :feature:yourmodule:ui:testDebugUnitTest --stacktrace
 
 # 5. Snapshot tests (if UI changed)
-./gradlew verifySnapshotDebug --stacktrace
+./gradlew verifyPaparazziDebug --stacktrace
 ```
 
 ## World Model

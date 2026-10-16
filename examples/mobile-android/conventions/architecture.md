@@ -19,7 +19,7 @@
 ## Module Structure
 
 ```
-app/
+.
 ├── feature/
 │   └── checkout/
 │       ├── ui/          # Composables + ViewModel
@@ -29,8 +29,7 @@ app/
 │   ├── di/             # Dependency injection setup
 │   ├── network/        # HTTP client, interceptors
 │   └── design-system/  # Shared UI components
-└── app/
-    └── application/    # App entry point, wiring
+└── app/                # App entry point, wiring
 ```
 
 **Dependency rules:**
@@ -49,17 +48,17 @@ When a UI element's visibility depends purely on existing state fields (no async
 ```kotlin
 data class Content(
     val priceCents: Int?,
-    val isPaidContent: Boolean,
+    val isPaidListing: Boolean,
     val isGatingEnabled: Boolean,
 ) : ViewState {
     val priceGuidance: PriceGuidance
         get() {
-            if (!isGatingEnabled || !isPaidContent) return PriceGuidance.NONE
+            if (!isGatingEnabled || !isPaidListing) return PriceGuidance.NONE
             val price = priceCents ?: return PriceGuidance.NONE
             return when {
                 price <= 0 -> PriceGuidance.NONE
                 price < MIN_VALID_PRICE_CENTS -> PriceGuidance.INVALID_TOO_LOW
-                price < CHART_ELIGIBLE_MIN_PRICE_CENTS -> PriceGuidance.CHART_INELIGIBLE
+                price < RECOMMENDED_MIN_PRICE_CENTS -> PriceGuidance.BELOW_RECOMMENDED
                 else -> PriceGuidance.NONE
             }
         }
