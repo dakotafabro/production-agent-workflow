@@ -34,16 +34,18 @@ A directory structure and set of fill-in documents that organize your individual
 
 ```bash
 # Clone the template
-git clone https://github.com/dakotafabro/production-agent-workflow.git ~/research
+git clone https://github.com/dakotafabro/production-agent-workflow.git ~/agent-workflow
 
 # Or if you already have a workspace repo, copy the structure in
 cp -r production-agent-workflow/* ~/your-workspace/
 ```
 
+Any directory works. The examples below use `~/agent-workflow`.
+
 Then run the interactive setup:
 
 ```bash
-cd ~/research
+cd ~/agent-workflow
 ./setup.sh
 ```
 
@@ -61,7 +63,7 @@ You can be productive in 15 minutes. The rest compounds over weeks.
 ## Directory Structure
 
 ```
-~/research/
+~/agent-workflow/
 ├── AGENTS.md                    # Agent norms and boundaries
 ├── workflow.md                  # Idea-to-ship phases
 ├── world-model.md              # How shared + individual knowledge work together
@@ -138,7 +140,7 @@ You don't need any of these conditions to use the template. Start with `AGENTS.m
 
 ## Worked Example
 
-See `examples/mobile-android/` for a complete, filled-in example based on a real production mobile app with 100+ modules. It demonstrates how each document looks when populated with real conventions.
+See `examples/mobile-android/` for a complete, filled-in example modeled on a large multi-module Android app. It demonstrates how each document looks when populated with real conventions.
 
 ## Related Projects
 
